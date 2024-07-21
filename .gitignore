@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# macOS
+.DS_Store
+
+# Build folder
+/build
+
+#clang cache folder
+/.cache
