@@ -28,7 +28,7 @@ PostProcess::process ()
 
   cout << "Lines count: " + to_string (inputLines.size ()) << endl;
 
-  // evaluate every line
+  // evaluate every line with Gcode postprocessor
   GcodeProcess gcode;
 
   for (const auto &line : inputLines)
