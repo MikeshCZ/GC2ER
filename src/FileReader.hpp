@@ -1,16 +1,18 @@
 #pragma once
 #include <string>
 
+using namespace std;
+
 // Reads the content of the inserted file and reads it into the string
 class FileReader
 {
 public:
-  explicit FileReader (const std::string &filename);
+  explicit FileReader (const string &filename);
 
   // Read the file given during constructor of the class and return it as the
   // string value
-  std::string read () const;
+  string read () const;
 
 private:
-  const std::string filename;
+  const string filename;
 };

@@ -10,14 +10,16 @@ set(SOURCES
     src/main.cpp
     src/ArgumentParser.cpp
     src/FileReader.cpp
-    src/Postprocess.cpp
+    src/PostProcess.cpp
+    src/GcodeProcess.cpp
 )
 
 # Add header files
 set(HEADERS
   src/ArgumentParser.hpp
   src/FileReader.hpp
-  src/Postprocess.hpp
+  src/PostProcess.hpp
+  src/GcodeProcess.hpp
 )
 
 # wxWidgets library

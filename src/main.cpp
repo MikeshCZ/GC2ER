@@ -1,34 +1,36 @@
 #include "ArgumentParser.hpp"
-#include "Postprocess.hpp"
+#include "PostProcess.hpp"
 #include <iostream>
 #include <string>
+
+using namespace std;
 
 int
 main (int argc, char *argv[])
 {
-  std::cout << "GC2ER - Gcode To Estun Robot" << std::endl;
-  std::cout << std::endl;
+  cout << "GC2ER - Gcode To Estun Robot" << endl;
+  cout << endl;
 
   // Get input and output files
   ArgumentParser parser;
   parser.parse (argc, argv);
 
-  std::string inputFile = parser.getInputFile ();
-  std::string outputFolder = parser.getOutputFolder ();
+  string inputFile = parser.getInputFile ();
+  string outputFolder = parser.getOutputFolder ();
 
   // If no arguments, print help
   if (inputFile.empty ())
     {
-      std::cout << "Arguments:" << std::endl;
-      std::cout << "-i, --inputFile <file>      Input Gcode file (required)"
-                << std::endl;
-      std::cout
+      cout << "Arguments:" << endl;
+      cout << "-i, --inputFile <file>      Input Gcode file (required)"
+                << endl;
+      cout
           << "-o, --inputFolder <folder>  Output folder for program files"
-          << std::endl;
+          << endl;
       return 1;
     }
 
-  Postprocess postprocess (inputFile, outputFolder);
+  PostProcess postprocess (inputFile, outputFolder);
   postprocess.process ();
 
   return 0;

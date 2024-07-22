@@ -2,16 +2,23 @@
 #include <string>
 #include <vector>
 
-class Postprocess
+using namespace std;
+
+class PostProcess
 {
 public:
-  Postprocess (const std::string &inputFile, const std::string &outputFolder);
+  PostProcess (const string &inputFile, const string &outputFolder);
   void process ();
+  void splitIntoChunks (vector<string> &inputLines,
+                        vector<vector<string> > &outputLines,
+                        size_t chunkSize);
 
 private:
-  const std::string inputFile;
-  const std::string outputFolder;
-  std::string inputFileContent;
-  std::vector<std::string> inputLines;
-  std::string line;
+  const string inputFile;
+  const string outputFolder;
+  string inputFileContent;
+  vector<string> inputLines;
+  vector<string> tempLines;
+  string line;
+  vector<vector<string> > outputLines;
 };
