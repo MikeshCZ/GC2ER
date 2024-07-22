@@ -32,6 +32,9 @@ main (int argc, char *argv[])
 
   PostProcess postprocess (inputFile, outputFolder);
   postprocess.process ();
-
+  
+  // The End
+  cout << endl;
+  cout << "Program finished." << endl;
   return 0;
 }

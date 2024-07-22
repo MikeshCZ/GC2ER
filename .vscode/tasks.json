@@ -1,33 +1,38 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "init",
-      "type": "shell",
-      "command": "[ ! -d 'build' ] && mkdir build ; cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "build",
-      "type": "shell",
-      "command": "cd build && make -j8",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      },
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "init",
+            "type": "shell",
+            "command": "[ ! -d 'build' ] && mkdir build ; cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build-win",
+            "type": "shell",
+            "command": "cd build; ninja",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build-mac",
+            "type": "shell",
+            "command": "cd build && make -j8",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": []
+        }
+    ]
 }
