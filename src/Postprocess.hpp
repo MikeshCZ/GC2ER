@@ -23,7 +23,9 @@ private:
   const string outputFolder;
   string inputFileContent;
   vector<string> inputLines;
-  vector<string> tempLines;
+  vector<string> tempERP;
+  vector<string> tempERD;
   string line;
-  vector<vector<string> > outputLines;
+  vector<vector<string> > outputERP;
+  vector<vector<string> > outputERD;
 };

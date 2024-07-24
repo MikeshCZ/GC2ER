@@ -34,11 +34,21 @@ PostProcess::process ()
   for (const auto &line : inputLines)
     {
       // Process every single line from input line
-      tempLines.push_back (gcode.process (line));
-      // cout << line << endl;
+      auto [erd, erp] = gcode.process (line);
+
+      if (erd != "" or erp != "")
+        {
+          tempERD.push_back (erd);
+          tempERP.push_back (erp);
+        }
+
+      // DEBUG ONLY
+      // cout << "ERD:" << endl << erd << endl;
+      // cout << "ERP:" << endl << erp << endl << endl;
     }
 
-  splitIntoChunks (tempLines, outputLines, 950);
+  splitIntoChunks (tempERP, outputERP, 950);
+  splitIntoChunks (tempERD, outputERD, 950);
 }
 
 void
