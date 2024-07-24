@@ -23,16 +23,15 @@ main (int argc, char *argv[])
     {
       cout << "Arguments:" << endl;
       cout << "-i, --inputFile <file>      Input Gcode file (required)"
-                << endl;
-      cout
-          << "-o, --inputFolder <folder>  Output folder for program files"
-          << endl;
+           << endl;
+      cout << "-o, --inputFolder <folder>  Output folder for program files"
+           << endl;
       return 1;
     }
 
   PostProcess postprocess (inputFile, outputFolder);
   postprocess.process ();
-  
+
   // The End
   cout << endl;
   cout << "Program finished." << endl;

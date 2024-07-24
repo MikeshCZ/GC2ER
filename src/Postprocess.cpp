@@ -1,8 +1,4 @@
 #include "PostProcess.hpp"
-#include "FileReader.hpp"
-#include "GcodeProcess.hpp"
-#include <iostream>
-#include <sstream>
 
 PostProcess::PostProcess (const string &inputFile, const string &outputFolder)
     : inputFile (inputFile), outputFolder (outputFolder)
@@ -14,6 +10,14 @@ PostProcess::PostProcess (const string &inputFile, const string &outputFolder)
 void
 PostProcess::process ()
 {
+  string inputFileContent;
+  vector<string> inputLines;
+  string line;
+  vector<string> tempERP;
+  vector<string> tempERD;
+  vector<vector<string> > outputERP;
+  vector<vector<string> > outputERD;
+
   FileReader reader (inputFile);
   inputFileContent = reader.read ();
 
