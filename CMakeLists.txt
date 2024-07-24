@@ -40,6 +40,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
     # Set specific properties for GUI application on macOS
     if(WIN32)
         # Windows
+        set(CMAKE_GENERATOR_PLATFORM x64)
         set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
     elseif(APPLE)
         # macOS
