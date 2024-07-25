@@ -22,7 +22,6 @@
                 "panel": "dedicated"
             },
             "problemMatcher": [],
-            "dependsOn": "init"
         },
         {
             "label": "build-mac",

@@ -10,6 +10,7 @@ GcodeProcess::process (const string &inputLine)
   // No Gcode command -> SKIP
   if (inputLine[0] != 'G')
     {
+      cout << "Input line skipped: " << inputLine << endl;
       return { "", "" };
     }
 
@@ -74,6 +75,7 @@ GcodeProcess::process (const string &inputLine)
       break;
 
     default: // unknown G code line -> skip
+      cout << "Input line skipped (unknow Gcode command): " << inputLine << endl;
       return { "", "" };
       break;
     }
