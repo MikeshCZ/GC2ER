@@ -3,14 +3,18 @@
 PostProcess::PostProcess (const string &inputFile, const string &outputFolder)
     : inputFile (inputFile), outputFolder (outputFolder)
 {
+
+  outputFileName = getFileNameWithoutExtension (inputFile);
+
   cout << "Input file: " + inputFile << endl;
+  cout << "Output file name: " + outputFileName << endl;
   cout << "Output folder: " + outputFolder << endl;
 }
 
 void
 PostProcess::process ()
 {
-  string inputFileContent;
+  // local variables
   vector<string> inputLines;
   string line;
   vector<string> tempERP;
@@ -18,8 +22,9 @@ PostProcess::process ()
   vector<vector<string> > outputERP;
   vector<vector<string> > outputERD;
 
+  // read the input file
   FileReader reader (inputFile);
-  inputFileContent = reader.read ();
+  string inputFileContent = reader.read ();
 
   // stream input data
   istringstream stream (inputFileContent);
@@ -40,6 +45,7 @@ PostProcess::process ()
       // Process every single line from input line
       auto [erd, erp] = gcode.process (line);
 
+      // if there is the output from gcode process push to temp vector strings
       if (erd != "" or erp != "")
         {
           tempERD.push_back (erd);
@@ -51,8 +57,15 @@ PostProcess::process ()
       // cout << "ERP:" << endl << erp << endl << endl;
     }
 
+  // split into chunks
   splitIntoChunks (tempERP, outputERP, 950);
   splitIntoChunks (tempERD, outputERD, 950);
+
+  // Write to the ouput files
+  FileWriter writer(outputFileName, outputFolder, "GC2ER/Project");
+  writer.write("erp", outputERP);
+  writer.write("erd", outputERD);
+
 }
 
 void
@@ -74,4 +87,22 @@ PostProcess::splitIntoChunks (vector<string> &inputLines,
       outputLines.emplace_back (inputLines.begin () + i,
                                 inputLines.begin () + end);
     }
+}
+
+string
+PostProcess::getFileNameWithoutExtension (const string &path)
+{
+  // Získání jména souboru z cesty pomocí <filesystem>
+  filesystem::path p = path;
+  string filename = p.filename ().string ();
+
+  // Najděte poslední tečku v jménu souboru
+  size_t lastDot = filename.find_last_of ('.');
+  if (lastDot == string::npos)
+    {
+      // Pokud tečka nebyla nalezena, soubor nemá příponu
+      return filename;
+    }
+  // Vraťte část řetězce před poslední tečkou
+  return filename.substr (0, lastDot);
 }

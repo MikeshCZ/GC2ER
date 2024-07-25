@@ -1,6 +1,8 @@
 #pragma once
 #include "FileReader.hpp"
+#include "FileWriter.hpp"
 #include "GcodeProcess.hpp"
+#include <filesystem>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -22,6 +24,8 @@ private:
   void splitIntoChunks (vector<string> &inputLines,
                         vector<vector<string> > &outputLines,
                         size_t chunkSize);
+  string getFileNameWithoutExtension (const string &path);
   const string inputFile;
   const string outputFolder;
+  string outputFileName;
 };

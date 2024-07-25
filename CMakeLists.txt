@@ -12,6 +12,7 @@ set(SOURCES
     src/FileReader.cpp
     src/PostProcess.cpp
     src/GcodeProcess.cpp
+    src/FileWriter.cpp
 )
 
 # Add header files
@@ -20,6 +21,7 @@ set(HEADERS
   src/FileReader.hpp
   src/PostProcess.hpp
   src/GcodeProcess.hpp
+  src/FileWriter.hpp
 )
 
 # wxWidgets library
