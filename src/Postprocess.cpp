@@ -62,10 +62,11 @@ PostProcess::process ()
   splitIntoChunks (tempERD, outputERD, 950);
 
   // Write to the ouput files
-  FileWriter writer(outputFileName, outputFolder, "GC2ER/Project");
-  writer.write("erp", outputERP);
-  writer.write("erd", outputERD);
-
+  FileWriter writer (outputFileName, outputFolder, "GC2ER/Project");
+  writer.write ("erp", outputERP);
+  writer.write ("erd", outputERD);
+  writer.createEmptyFile ("prjglobal.erd");
+  writer.createMainFiles ();
 }
 
 void
