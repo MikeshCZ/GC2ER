@@ -27,7 +27,7 @@ main (int argc, char *argv[])
            << endl;
       cout << "-o, --inputFolder <folder>  Output folder for program files. Default is 'out'."
            << endl;
-      cout << "-s, --chunkSize <intiger>  Size of the lines in one program file. Range 1 - 990. Default is '900'."
+      cout << "-s, --chunkSize <intiger>  Size of the lines in one program file. Range 1 - 990. Default is '500'."
            << endl;
       return 1;
     }
