@@ -17,6 +17,7 @@ main (int argc, char *argv[])
 
   string inputFile = parser.getInputFile ();
   string outputFolder = parser.getOutputFolder ();
+  int chunkSize = parser.getChunkSize ();
 
   // If no arguments, print help
   if (inputFile.empty ())
@@ -24,12 +25,14 @@ main (int argc, char *argv[])
       cout << "Arguments:" << endl;
       cout << "-i, --inputFile <file>      Input Gcode file (required)"
            << endl;
-      cout << "-o, --inputFolder <folder>  Output folder for program files"
+      cout << "-o, --inputFolder <folder>  Output folder for program files. Default is 'out'."
+           << endl;
+      cout << "-s, --chunkSize <intiger>  Size of the lines in one program file. Range 1 - 990. Default is '900'."
            << endl;
       return 1;
     }
 
-  PostProcess postprocess (inputFile, outputFolder);
+  PostProcess postprocess (inputFile, outputFolder, chunkSize);
   postprocess.process ();
 
   // The End

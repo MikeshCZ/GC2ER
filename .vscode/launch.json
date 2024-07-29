@@ -22,7 +22,9 @@
         "-i",
         "in/cone_300_300.gcode",
         "-o",
-        "out"
+        "out",
+        "-s",
+        "500"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -42,7 +44,9 @@
         "-i",
         "in/cone_300_300.gcode",
         "-o",
-        "out"
+        "out",
+        "-s",
+        "500"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

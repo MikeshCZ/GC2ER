@@ -13,7 +13,8 @@ using namespace std;
 class PostProcess
 {
 public:
-  PostProcess (const string &inputFile, const string &outputFolder);
+  PostProcess (const string &inputFile, const string &outputFolder,
+               const int &chunkSize);
 
   // Processing the input gcode file
   void process ();
@@ -27,5 +28,6 @@ private:
   string getFileNameWithoutExtension (const string &path);
   const string inputFile;
   const string outputFolder;
+  const int chunkSize;
   string outputFileName;
 };

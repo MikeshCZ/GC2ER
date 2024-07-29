@@ -1,14 +1,15 @@
 #include "PostProcess.hpp"
 
-PostProcess::PostProcess (const string &inputFile, const string &outputFolder)
-    : inputFile (inputFile), outputFolder (outputFolder)
+PostProcess::PostProcess (const string &inputFile, const string &outputFolder, const int &chunkSize)
+    : inputFile (inputFile), outputFolder (outputFolder), chunkSize(chunkSize)
 {
 
   outputFileName = getFileNameWithoutExtension (inputFile);
 
-  cout << "Input file: " + inputFile << endl;
-  cout << "Output file name: " + outputFileName << endl;
-  cout << "Output folder: " + outputFolder << endl;
+  cout << "Input file: " << inputFile << endl;
+  cout << "Output file name: " << outputFileName << endl;
+  cout << "Output folder: " << outputFolder << endl;
+  cout << "Chunk size: " << to_string(chunkSize) << endl;
 }
 
 void
@@ -58,8 +59,8 @@ PostProcess::process ()
     }
 
   // split into chunks
-  splitIntoChunks (tempERP, outputERP, 950);
-  splitIntoChunks (tempERD, outputERD, 950);
+  splitIntoChunks (tempERP, outputERP, chunkSize);
+  splitIntoChunks (tempERD, outputERD, chunkSize);
 
   // Write to the ouput files
   FileWriter writer (outputFileName, outputFolder, "GC2ER/Project");

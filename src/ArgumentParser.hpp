@@ -1,22 +1,33 @@
 #pragma once
 #include <string>
 
+using namespace std;
+
 // Parse arguments from exec file
 // -i, --inputFile    Input Gcode file
 // -o, --outputFolder   Output files folder
 class ArgumentParser
 {
 public:
+  ArgumentParser ();
   // Parse arguments from exec file
   void parse (int argc, char *argv[]);
 
   // -i, --inputFile  Input Gcode file
-  std::string getInputFile () const;
+  string getInputFile ();
 
   // -o, --outputFolder   Output files prefix
-  std::string getOutputFolder () const;
+  string getOutputFolder ();
+
+  // -s, --chunkSize  number of lines in one file
+  int getChunkSize ();
 
 private:
-  std::string inputFile;
-  std::string outputFolder;
+  bool isValidNumber (const std::string &str);
+  string inputFile;
+  string outputFolder;
+  int chunkSize;
+  bool inputFolderProvided;
+  bool outputFolderProvided;
+  bool chunkSizeProvided;
 };

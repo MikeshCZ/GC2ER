@@ -32,4 +32,5 @@ FileReader::read () const
       file.close ();
       cerr << e.what () << '\n';
     }
+  return "";
 }
