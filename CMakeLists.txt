@@ -38,32 +38,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
     # Release configuration
     message("Building Release configuration")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2") # Adds optimization
-
-    # Set specific properties for GUI application on macOS
-    if(WIN32)
-        # Windows
-        set(CMAKE_GENERATOR_PLATFORM x64)
-        set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE)
-    elseif(APPLE)
-        # macOS
-        set_target_properties(${PROJECT_NAME} PROPERTIES
-            MACOSX_BUNDLE FALSE
-            # MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/Info.plist
-        )
-        # Icon path definition
-        # set(MACOSX_ICON_FILE ${CMAKE_SOURCE_DIR}/AppIcon.icns)
-
-        # Copying an icon to an application package
-        # add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        #     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        #         ${MACOSX_ICON_FILE}
-        #         $<TARGET_BUNDLE_DIR:${PROJECT_NAME}>/Contents/Resources/AppIcon.icns
-        #     COMMENT "Copying AppIcon.icns to the app bundle"
-        # )
-    else()
-        # Linux and other systems
-        # No special settings needed here
-    endif()
 else()
     # Debug configuration
     message("Building Debug configuration")

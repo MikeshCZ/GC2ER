@@ -17,7 +17,7 @@
       "name": "Build and Launch (WIN)",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/GC2ER.exe",
+      "program": "${workspaceFolder}/build/${fileWorkspaceFolderBasename}.exe",
       "args": [
         "-i",
         "in/cone_300_300.gcode",
@@ -27,7 +27,7 @@
         "500"
       ],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/build",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
@@ -39,7 +39,7 @@
       "name": "Build and Launch (MAC)",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/GC2ER",
+      "program": "${workspaceFolder}/build/${fileWorkspaceFolderBasename}",
       "args": [
         "-i",
         "in/cone_300_300.gcode",
@@ -49,7 +49,7 @@
         "500"
       ],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/build",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
