@@ -94,9 +94,9 @@ GcodeProcess::erdProcess (unordered_map<char, double> &values) const
   erd << "x=" << values['X'] << ",";
   erd << "y=" << values['Y'] << ",";
   erd << "z=" << values['Z'] << ",";
-  erd << "a=" << 180 << ",";
+  erd << "a=" << 0 << ",";
   erd << "b=" << 0 << ",";
-  erd << "c=" << 0 << ",";
+  erd << "c=" << 180 << ",";
   erd << "a7=0.000000,a8=0.000000,a9=0.000000,a10=0.000000,a11=0."
          "000000,a12=0.000000,a13=0.000000,a14=0.000000,a15=0.000000,"
          "a16=0.000000}";
