@@ -9,6 +9,7 @@ int
 main (int argc, char *argv[])
 {
   cout << "GC2ER - Gcode To Estun Robot" << endl;
+  cout << "Version: 0.2 ALPHA" << endl;
   cout << endl;
 
   // Get input and output files
