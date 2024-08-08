@@ -33,26 +33,30 @@ GcodeProcess::process (const string &inputLine)
   switch (static_cast<int> (values['G']))
     {
     case 0: // G00: Rapid positioning
+
       // ERD data composition
       erd = erdProcess (values);
 
       // ERP program composition
-      erp << "MovJ{P=t_l.CPOS";
-      erp << cpos;
-      erp << ", Coord = t_g.USERCOOR0}";
+      // MovJ{P=t_l.CPOS0,V=t_l.SPEED0,Tool=t_g.TOOL0,Coord=t_g.USERCOOR0,PayLoad=t_g.PAYLOAD0}
+      erp << "MovJ{P=t_l.CPOS" << cpos << ",";
+      erp << "V=t_l.SPEED" << cpos << ",";
+      erp << "Tool=t_g.TOOL0,Coord=t_g.USERCOOR0,PayLoad=t_g.PAYLOAD0}";
 
       cpos++;
       return { erd.str (), erp.str () };
       break;
 
     case 1: // G01: Linear interpolation (straight line)
+
       // ERD data composition
       erd = erdProcess (values);
 
       // ERP program composition
-      erp << "MovL{P=t_l.CPOS";
-      erp << cpos;
-      erp << ", Coord = t_g.USERCOOR0}";
+      // MovL{P=t_l.CPOS0,V=t_l.SPEED0,Tool=t_g.TOOL0,Coord=t_g.USERCOOR0,PayLoad=t_g.PAYLOAD0}
+      erp << "MovL{P=t_l.CPOS" << cpos << ",";
+      erp << "V=t_l.SPEED" << cpos << ",";
+      erp << "Tool=t_g.TOOL0,Coord=t_g.USERCOOR0,PayLoad=t_g.PAYLOAD0}";
 
       cpos++;
       return { erd.str (), erp.str () };
@@ -75,7 +79,8 @@ GcodeProcess::process (const string &inputLine)
       break;
 
     default: // unknown G code line -> skip
-      cout << "Input line skipped (unknow Gcode command): " << inputLine << endl;
+      cout << "Input line skipped (unknow Gcode command): " << inputLine
+           << endl;
       return { "", "" };
       break;
     }
@@ -100,6 +105,14 @@ GcodeProcess::erdProcess (unordered_map<char, double> &values) const
   erd << "a7=0.000000,a8=0.000000,a9=0.000000,a10=0.000000,a11=0."
          "000000,a12=0.000000,a13=0.000000,a14=0.000000,a15=0.000000,"
          "a16=0.000000}";
+
+  erd << "\n";
+
+  erd << "SPEED";
+  erd << cpos;
+  erd << "={_type=\"SPEED\",per=100.000000,";
+  erd << "tcp=" << values['F'] << ",";
+  erd << "ori=360.000000,exj_l=360.000000,exj_r=180.000000}";
 
   return erd;
 }

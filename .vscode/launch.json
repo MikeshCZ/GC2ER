@@ -20,7 +20,7 @@
       "program": "${workspaceFolder}/build/${fileWorkspaceFolderBasename}.exe",
       "args": [
         "-i",
-        "in/cone_300_300.gcode",
+        "in/paravan.gcode",
         "-o",
         "out",
         "-s",
@@ -42,7 +42,7 @@
       "program": "${workspaceFolder}/build/${fileWorkspaceFolderBasename}",
       "args": [
         "-i",
-        "in/cone_300_300.gcode",
+        "in/paravan.gcode",
         "-o",
         "out",
         "-s",
