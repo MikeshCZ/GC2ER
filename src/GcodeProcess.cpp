@@ -91,6 +91,9 @@ GcodeProcess::erdProcess (unordered_map<char, double> &values) const
 {
   stringstream erd;
 
+  // conversion from mm/min to mm/s
+  double speed = values['F'] / 60;
+
   erd << "CPOS";
   erd << cpos;
   erd << "={_type=\"CPOS\",confdata={_type=\"POSCFG\",mode=0,cf1="
@@ -111,7 +114,7 @@ GcodeProcess::erdProcess (unordered_map<char, double> &values) const
   erd << "SPEED";
   erd << cpos;
   erd << "={_type=\"SPEED\",per=100.000000,";
-  erd << "tcp=" << values['F'] << ",";
+  erd << "tcp=" << speed << ",";
   erd << "ori=360.000000,exj_l=360.000000,exj_r=180.000000}";
 
   return erd;
